@@ -75,7 +75,8 @@ if(require.main == module) {
        var checkJson =  checkHtmlFile(cheerio.load(response.rawEncoded), program.checks);
        var outJson = JSON.stringify(checkJson, null, 4);
        console.log(outJson);
-        })
+       fs.writeFileSync('./feed.json', outJson);
+       })
     }
          
         
@@ -83,6 +84,7 @@ if(require.main == module) {
 	var checkJson = checkHtmlFile(cheerioHtmlFile(program.file), program.checks);
 	var outJson = JSON.stringify(checkJson, null, 4);
 	console.log(outJson);
+        fs.writeFileSync('./feed.json', outJson);
 }
 } else {
     exports.checkHtmlFile = checkHtmlFile;
