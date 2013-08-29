@@ -19,6 +19,10 @@ app.get('/', function(request, response) {
 });
 
 // Render example.com/orders
+app.get('/about', function(request, response) {
+    var data = fs.readFileSync('about.html').toString();
+    response.send(data);
+});
 app.get('/orders', function(request, response) {
   global.db.Order.findAll().success(function(orders) {
     var orders_json = [];
